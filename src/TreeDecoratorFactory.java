@@ -3,23 +3,23 @@ import trees.Tree;
 
 public class TreeDecoratorFactory {
     public static Tree getTreeDecorator(String decoratorName, Tree tree) {
+        decoratorName = decoratorName.replaceAll("\\s+", "").toLowerCase();
         return switch (decoratorName) {
-            case "BallsBlue" -> new BallsBlue(tree);
-            case "BallsRed" -> new BallsRed(tree);
-            case "BallsSilver" -> new BallsSilver(tree);
-            case "Ribbons" -> new Ribbons(tree);
-            case "Ruffles" -> new Ruffles(tree);
-            case "Star" -> {
+            case "ballsblue" -> new BallsBlue(tree);
+            case "ballsred" -> new BallsRed(tree);
+            case "ballssilver" -> new BallsSilver(tree);
+            case "ribbons" -> new Ribbons(tree);
+            case "ruffles" -> new Ruffles(tree);
+            case "star" -> {
                 if (tree.hasStar) {
                     System.out.println("Tree already has a star");
                     yield tree;
                 }
-                tree = new Star(tree);
-                yield tree;
+                yield new Star(tree);
             }
-            case "Lights" -> new Lights(tree);
-            case "LEDs" -> new LEDs(tree);
-            default -> null;
+            case "lights" -> new Lights(tree);
+            case "leds" -> new LEDs(tree);
+            default -> throw new IllegalArgumentException("Invalid decorator name: " + decoratorName);
         };
     }
 }

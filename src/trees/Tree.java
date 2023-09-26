@@ -14,7 +14,7 @@ public abstract class Tree {
     }
 
     public String getDescription() {
-        return description;
+        return description + " tree decorated with ";
     }
 
     public DefaultDict<String> getDecorationFrequencies() {

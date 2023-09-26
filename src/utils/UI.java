@@ -6,6 +6,8 @@ import java.text.NumberFormat;
 
 public class UI {
     public static Scanner sc = new Scanner(System.in);
+    public static String input;
+    public static int selection;
 
     public static void printMenu(List<String> menuItems, boolean hasExit) {
         for (int i = 0; i < menuItems.size(); i++) {
@@ -48,7 +50,7 @@ public class UI {
         }
     }
 
-    public static boolean inRange(String str, int min, int max) {
+    public static int inRange(String str, int min, int max) {
         int num = parseNonNegativeInt(str);
         if (min < 0 || max < 0) throw new IllegalArgumentException("min and max must be non-negative");
         if (min > max) {
@@ -56,6 +58,10 @@ public class UI {
             min = max;
             max = temp;
         }
-        return num >= min && num <= max;
+        if (num == -1 || num < min || num > max) {
+            System.out.println("Please enter a number between " + min + " and " + max + ".");
+            return -1;
+        }
+        return num;
     }
 }

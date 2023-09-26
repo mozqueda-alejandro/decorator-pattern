@@ -1,19 +1,14 @@
 import trees.*;
-import decorators.*;
 
 public class TreeFactory {
     public static Tree getTree(String treeType) {
-        treeType = treeType.replaceAll("\\s+","");
-        if (treeType.equalsIgnoreCase("BALSAMFIR")) {
-            return new BalsamFir();
-        } else if (treeType.equalsIgnoreCase("DOUGLASFIR")) {
-            return new DouglasFir();
-        } else if (treeType.equalsIgnoreCase("FRASERFIR")) {
-            return new FraserFir();
-        } else if (treeType.equalsIgnoreCase("COLORADOBLUESPRUCE")) {
-            return new ColoradoBlueSpruce();
-        } else {
-            return null;
-        }
+        treeType = treeType.replaceAll("\\s+","").toLowerCase();
+        return switch (treeType) {
+            case "balsamfir" -> new BalsamFir();
+            case "coloradobluespruce" -> new ColoradoBlueSpruce();
+            case "douglasfir" -> new DouglasFir();
+            case "fraserfir" -> new FraserFir();
+            default -> throw new IllegalArgumentException("Invalid tree type: " + treeType);
+        };
     }
 }

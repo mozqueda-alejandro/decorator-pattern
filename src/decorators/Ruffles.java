@@ -16,7 +16,7 @@ public class Ruffles extends TreeDecorator {
 
     @Override
     public double getCost() {
-        return 1 + tree.getCost();
+        return tree.getCost() + 1;
     }
 
     @Override

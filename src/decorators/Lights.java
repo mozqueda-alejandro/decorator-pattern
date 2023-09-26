@@ -16,7 +16,7 @@ public class Lights extends TreeDecorator {
 
     @Override
     public double getCost() {
-        return 2 + tree.getCost();
+        return tree.getCost() + 5;
     }
 
     @Override

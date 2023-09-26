@@ -30,9 +30,13 @@ public class DefaultDict<T> {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Map.Entry<T, Integer> entry : frequencyMap.entrySet()) {
-            sb.append(entry.getValue()).append(" ").append(entry.getKey()).append("\n");
-        }
+        // Print the frequency of each key and the key itself next to it in alphabetical order of the keys
+        frequencyMap.keySet().stream().sorted().forEach(key -> sb.append(frequencyMap.get(key)).append(" ").append(key).append("\n"));
+
+//        for (Map.Entry<T, Integer> entry : frequencyMap.entrySet()) {
+//            sb.append(entry.getValue()).append(" ").append(entry.getKey()).append("\n");
+//        }
+
         return sb.toString();
     }
 }
